@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background:#ffe6f0; display:flex; justify-content:center; align-items:center; height:100vh;">
+
+    <div style="text-align:center;">
+        <img id="welcomeImage" src="images/welcome.png" style="width:250px;">
+        <h2 id="welcomeText" style="color:#cc0066; margin-top:20px;"></h2>
+        <p style="color:#555;">AarogyaVaani is ready to assist your health journey.</p>
+
+        <button onclick="goToChat()">Continue to Chatbot</button>
+    </div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+    const username = localStorage.getItem("username");
+
+    if (type === "back") {
+        document.getElementById("welcomeText").innerText =
+            "Welcome Back, " + username + " 💚";
+    } else {
+        document.getElementById("welcomeText").innerText =
+            "Welcome, " + username + " 💚";
+    }
+
+    function goToChat() {
+        window.location.href = "chatbot.html";
+    }
+</script>
+
+</body>
+</html>

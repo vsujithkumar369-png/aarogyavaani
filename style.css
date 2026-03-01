@@ -1,0 +1,361 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffeaea, #ffcccc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle medical background */
+body::before {
+    content: "✚ ✚ ✚";
+    position: absolute;
+    font-size: 100px;
+    color: rgba(255, 0, 0, 0.04);
+    top: 10%;
+    left: 5%;
+}
+
+body::after {
+    content: "♥ ♥ ♥";
+    position: absolute;
+    font-size: 120px;
+    color: rgba(255, 0, 0, 0.03);
+    bottom: 10%;
+    right: 5%;
+}
+
+/* Login Container */
+.login-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Login Card */
+.login-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Logo */
+.logo {
+    width: 160px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Title */
+h1 {
+    color: #b30000;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+/* Tagline */
+.tagline {
+    font-size: 16px;
+    color: #0b6623;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    border-left: 4px solid #0b6623;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+/* Inputs */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #cc0000;
+    box-shadow: 0 0 8px rgba(204, 0, 0, 0.2);
+    background-color: #fff;
+}
+
+/* Password Box */
+.password-box {
+    position: relative;
+}
+
+.password-box span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 13px;
+    color: #cc0000;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #ff4d4d, #cc0000);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(204, 0, 0, 0.3);
+}
+
+/* Register Text */
+.register-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #cc0000;
+    text-decoration: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+CHATBOT PAGE
+========================= */
+
+/* =========================
+   CHATBOT PAGE
+========================= */
+
+.chat-body {
+    margin: 0;
+    background: #ffe6f0;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ECG BACKGROUND */
+.chat-body::before {
+    content: "";
+    position: absolute;
+    top: 55%;                     /* slightly lower than 50% */
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 1100px;
+    height: 360px;
+    background: url("images/ecg.png") no-repeat center;
+    background-size: contain;
+    opacity: 0.20;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* MAIN CONTAINER */
+.chat-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 270px;
+    background: linear-gradient(180deg, #ffb6c1, #ff99cc);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* SIDEBAR TOP */
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* BIGGER LOGO */
+.sidebar-logo {
+    width: 170px;
+    margin-bottom: 12px;
+}
+
+/* TITLE DARK SKY BLUE */
+.sidebar-title {
+    color: #0077b6;
+    font-size: 22px;
+    font-weight: bold;
+}
+/* HISTORY SECTION */
+.history-section {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.history-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+}
+
+#historyList li {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#historyList li:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+    width: 100%;
+}
+
+/* CHAT MAIN */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* HEADER */
+.chat-header {
+    background: #ff99cc;
+    padding: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+/* MESSAGE AREA */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* BOT MESSAGE */
+.bot-message {
+    background: white;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    max-width: 60%;
+}
+
+/* USER MESSAGE */
+.user-message {
+    background: #ff66a3;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    max-width: 60%;
+    margin-left: auto;
+}
+
+/* INPUT AREA */
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #ffd6e8;
+    gap: 10px;
+}
+
+/* SMALL UPLOAD BUTTON */
+.upload-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 0;
+}
+
+/* BIG TEXT INPUT */
+.chat-input-area input[type="text"] {
+    flex: 1;
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* SEND BUTTON */
+.send-btn {
+    width: 100px;
+    padding: 14px;
+    border-radius: 10px;
+}

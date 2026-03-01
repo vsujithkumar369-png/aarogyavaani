@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AarogyaVaani Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="chat-body">
+
+<div class="chat-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+    <div class="sidebar-top">
+        <img src="images/logo.png" class="sidebar-logo">
+        <h2 class="sidebar-title">AarogyaVaani</h2>
+
+        <div class="history-section">
+            <h3>Chat History</h3>
+            <ul id="historyList">
+                <li>No previous chats</li>
+            </ul>
+        </div>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+
+    <!-- MAIN CHAT -->
+    <div class="chat-main">
+
+        <div class="chat-header">
+            💗 Health Assistant
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="bot-message">
+                Hello <span id="userDisplay"></span> 👋 <br>
+                How can I assist your health today?
+            </div>
+        </div>
+
+        <!-- INPUT AREA -->
+        <div class="chat-input-area">
+
+            <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">📎</button>
+            <input type="file" id="imageUpload" hidden>
+
+            <input type="text" id="userInput" placeholder="Type your message...">
+
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
