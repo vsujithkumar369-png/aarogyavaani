@@ -323,3 +323,10 @@ displayHistory();
 window.onload = function(){
 updateHistory();
 };
+function clearHistory(){
+
+localStorage.removeItem("chatHistory");
+
+updateHistory();
+
+}
