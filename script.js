@@ -131,6 +131,14 @@ Paracetamol may help reduce fever.
 }
 
 if(message.includes("cough")){
+    if(language === "tamil"){
+return `உங்களுக்கு இருமல் உள்ளது.
+
+பராமரிப்பு:
+• வெந்நீர் குடிக்கவும்
+• தேன் மற்றும் இஞ்சி உதவும்
+• குளிர்பானங்களை தவிர்க்கவும்`;
+}
 return `You mentioned cough.
 
 Suggested care:
@@ -151,6 +159,14 @@ Suggested care:
 }
 
 if(message.includes("headache")){
+    if(language === "tamil"){
+return `உங்களுக்கு தலைவலி உள்ளது.
+
+பராமரிப்பு:
+• போதுமான நீர் குடிக்கவும்
+• அமைதியான இடத்தில் ஓய்வு எடுக்கவும்`;
+}
+
 return `You mentioned headache.
 
 Possible causes:
