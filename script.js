@@ -334,14 +334,14 @@ displayHistory();
 window.onload = function(){
 updateHistory();
 };
-function deleteHistory(index){
+function clearHistory(){
 
-let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+localStorage.removeItem("chatHistory");
 
-history.splice(index,1);
+const historyList = document.getElementById("historyList");
 
-localStorage.setItem("chatHistory", JSON.stringify(history));
-
-updateHistory();
+if(historyList){
+historyList.innerHTML = "<li>No previous chats</li>";
+}
 
 }
