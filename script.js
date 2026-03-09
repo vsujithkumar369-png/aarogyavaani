@@ -37,30 +37,40 @@ if (document.getElementById("userDisplay")) {
     document.getElementById("userDisplay").innerText = username;
 }
 
-// ---------------- CHATBOT ----------------
 function sendMessage() {
 
-    const input = document.getElementById("userInput");
-    const message = input.value.trim();
+const input = document.getElementById("userInput");
+const message = input.value.trim();
 
-    if (message === "") return;
+if(message === "") return;
 
-    const chatBox = document.getElementById("chatMessages");
+const chatBox = document.getElementById("chatMessages");
 
-    // USER MESSAGE
-    const userMsg = document.createElement("div");
-    userMsg.className = "user-message";
-    userMsg.innerText = message;
-    chatBox.appendChild(userMsg);
 
-    // BOT MESSAGE
-    const botMsg = document.createElement("div");
-    botMsg.className = "bot-message";
-    botMsg.innerText = getBotResponse(message);
-    chatBox.appendChild(botMsg);
+// USER MESSAGE
+const userMsg = document.createElement("div");
+userMsg.className = "user-message";
+userMsg.innerText = message;
+chatBox.appendChild(userMsg);
 
-    input.value = "";
-    chatBox.scrollTop = chatBox.scrollHeight;
+
+// BOT MESSAGE
+const botMsg = document.createElement("div");
+botMsg.className = "bot-message";
+botMsg.innerText = getBotResponse(message);
+chatBox.appendChild(botMsg);
+
+
+// -------- SAVE HISTORY --------
+let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+history.push(message);
+localStorage.setItem("chatHistory", JSON.stringify(history));
+
+displayHistory();
+
+input.value = "";
+
+chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 // ---------------- BOT RESPONSE ----------------
