@@ -233,3 +233,32 @@ return `Diabetes symptoms may include frequent urination and fatigue.
 
 return "Please describe your symptoms clearly so I can assist you.";
 }
+function displayHistory(){
+
+const historyBox = document.getElementById("chatHistory");
+
+if(!historyBox) return;
+
+historyBox.innerHTML = "";
+
+let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+if(history.length === 0){
+historyBox.innerHTML = "No previous chats";
+return;
+}
+
+history.slice(-5).forEach(msg => {
+
+let item = document.createElement("div");
+item.className = "history-item";
+item.innerText = msg;
+
+historyBox.appendChild(item);
+
+});
+
+}
+window.onload = function(){
+displayHistory();
+};
