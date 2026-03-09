@@ -1,67 +1,20 @@
-// ---------------- PASSWORD TOGGLE ----------------
-function togglePassword() {
-    const password = document.getElementById("password");
-
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
-}
-
-
-// ---------------- LOGIN FUNCTION ----------------
-function loginUser(event) {
-
-    event.preventDefault();
-
-    const username = document.querySelector("input[type='text']").value;
-
-    if (username.trim() === "") {
-        alert("Please enter username");
-        return;
-    }
-
-    localStorage.setItem("username", username);
-
-    // check if user logged before
-    if (localStorage.getItem("hasLoggedIn")) {
-
-        window.location.href = "welcome.html?type=back";
-
-    } else {
-
-        localStorage.setItem("hasLoggedIn", "true");
-        window.location.href = "welcome.html";
-    }
-}
-
-
-
-// ---------------- SHOW USERNAME IN CHATBOT ----------------
+// Show username
 if (document.getElementById("userDisplay")) {
-
-    const username = localStorage.getItem("username");
-    document.getElementById("userDisplay").innerText = username;
+    document.getElementById("userDisplay").innerText =
+        localStorage.getItem("username");
 }
 
-
-
-// ---------------- CHATBOT LOGIC ----------------
 let feverMode = false;
 
-
-
+// Send message
 function sendMessage() {
 
     const input = document.getElementById("userInput");
-    const message = input.value.trim();
+    const message = input.value.toLowerCase();
 
     if (message === "") return;
 
     const chatBox = document.getElementById("chatMessages");
-
-
 
     // USER MESSAGE
     const userMsg = document.createElement("div");
@@ -69,15 +22,11 @@ function sendMessage() {
     userMsg.innerText = message;
     chatBox.appendChild(userMsg);
 
-
-
-    // BOT MESSAGE
+    // BOT REPLY
     const botMsg = document.createElement("div");
     botMsg.className = "bot-message";
-    botMsg.innerText = getBotResponse(message);
+    botMsg.innerText = getBotResponse(message);;
     chatBox.appendChild(botMsg);
-
-
 
     input.value = "";
 
@@ -85,76 +34,85 @@ function sendMessage() {
 }
 
 
-
-// ---------------- BOT RESPONSE ----------------
+// BOT RESPONSE FUNCTION
 function getBotResponse(message) {
 
-    message = message.toLowerCase();
+message = message.toLowerCase();
 
 
+// FEVER
+if(message.includes("fever")){
+    return "You mentioned fever. Do you also have cough, cold, body pain or headache?";
+}
 
-    // FEVER DETECTION
-    if (message.includes("fever")) {
-
-        feverMode = true;
-
-        return "You mentioned fever.\n\nDo you also have these symptoms?\n• cough\n• cold\n• body pain\n• headache\n\nPlease type your symptoms.";
-    }
-
-
-
-    // FEVER SYMPTOMS
-    if (feverMode) {
-
-        if (message.includes("cough") || message.includes("cold")) {
-
-            feverMode = false;
-
-            return "You may have viral fever.\n\nSuggested care:\n• Take rest\n• Drink warm fluids\n• Steam inhalation\n\nMedicine guidance:\nParacetamol 500mg may help reduce fever.\n\n⚠ If fever continues more than 2 days consult a doctor.";
-        }
-
-
-
-        if (message.includes("body pain")) {
-
-            feverMode = false;
-
-            return "Fever with body pain detected.\n\nSuggested care:\n• Rest well\n• Drink plenty of water\n\nMedicine guidance:\nParacetamol may help reduce pain.";
-        }
-
-
-
-        if (message.includes("headache")) {
-
-            feverMode = false;
-
-            return "Fever with headache detected.\n\nSuggested care:\n• Rest in a quiet place\n• Drink warm fluids\n\nMedicine guidance:\nParacetamol may help.";
-        }
-    }
-
-
-
-    // OTHER PROBLEMS
-    if (message.includes("cold")) {
-        return "For cold: drink warm fluids and do steam inhalation.";
-    }
-
-    if (message.includes("cough")) {
-        return "For cough: drink warm water with honey.";
-    }
-
-    if (message.includes("stomach pain")) {
-        return "Avoid oily food and drink warm water.";
-    }
-
-
-
-    return "Please describe your health problem so I can assist you.";
+if(message.includes("fever") && message.includes("cough")){
+    return "This may be viral fever. Rest well, drink warm fluids and steam inhalation may help. Paracetamol can reduce fever. If it lasts more than 2 days, consult a doctor.";
 }
 
 
+// COLD
+if(message.includes("cold")){
+    return "For common cold: drink warm fluids, take steam inhalation and rest well.";
+}
 
-// ---------------- LOGOUT ----------------
-function logout() {
-    window.location.href = "index.html";
+
+// COUGH
+if(message.includes("cough")){
+    return "For cough: drink warm water with honey or ginger. Avoid cold drinks.";
+}
+
+
+// HEADACHE
+if(message.includes("headache")){
+    return "Headache can be caused by stress or dehydration. Rest, drink water and avoid too much screen time.";
+}
+
+
+// STOMACH PAIN
+if(message.includes("stomach pain")){
+    return `You mentioned stomach pain.
+
+Possible causes:
+• Indigestion
+• Gas
+• Food poisoning
+
+Suggested care:
+• Drink warm water
+• Avoid oily or spicy foods
+• Eat light meals
+
+Medicine guidance:
+• Antacid tablets may help reduce acidity
+
+⚠ If pain is severe or lasts more than 24 hours, consult a doctor.`;
+}
+
+
+// VOMITING
+if(message.includes("vomiting")){
+    return "Drink small amounts of water frequently. ORS solution can help prevent dehydration.";
+}
+
+
+// DIARRHEA
+if(message.includes("diarrhea")){
+    return "Drink ORS solution and stay hydrated. Avoid spicy foods.";
+}
+
+
+// BODY PAIN
+if(message.includes("body pain")){
+    return "Body pain may be due to fatigue or viral infection. Rest well and drink fluids.";
+}
+
+
+// STRESS
+if(message.includes("stress")){
+    return "Try deep breathing, meditation or short breaks from work.";
+}
+
+
+// DEFAULT
+return "Please describe your symptoms clearly so I can help you.";
 }
