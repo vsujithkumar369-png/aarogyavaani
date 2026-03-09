@@ -110,7 +110,11 @@ function getBotResponse(message){
 
 message = message.toLowerCase();
 
-if(message.includes("fever")){
+if(
+message.includes("fever") ||
+message.includes("kaichal") ||
+message.includes("kaysal")
+){
     if(language === "tamil"){
 return `உங்களுக்கு காய்ச்சல் உள்ளது.
 
@@ -134,7 +138,8 @@ Paracetamol may help reduce fever.
 ⚠ If fever continues more than 2 days consult a doctor.`;
 }
 
-if(message.includes("cough")){
+if(message.includes("cough")||
+message.includes("Irumbal")){
     if(language === "tamil"){
 return `உங்களுக்கு இருமல் உள்ளது.
 
@@ -153,7 +158,7 @@ Suggested care:
 ⚠ If cough lasts more than a week consult a doctor.`;
 }
 
-if(message.includes("cold")){
+if(message.includes("cold") ||message.includes("Joram")){
 return `You mentioned cold symptoms.
 
 Suggested care:
