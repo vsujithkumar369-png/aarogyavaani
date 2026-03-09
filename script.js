@@ -64,66 +64,44 @@ function sendMessage() {
 }
 
 // ---------------- BOT RESPONSE ----------------
-function getBotResponse(message) {
+function getBotResponse(message){
 
 message = message.toLowerCase();
 
-// FEVER
 if(message.includes("fever")){
 return `You mentioned fever.
-
-Possible causes:
-• Viral infection
-• Flu
-• Body infection
 
 Suggested care:
 • Take rest
 • Drink warm fluids
-• Use a cold cloth on forehead
+• Use cold compress
 
 Medicine guidance:
-• Paracetamol may help reduce fever
+Paracetamol may help reduce fever.
 
 ⚠ If fever continues more than 2 days consult a doctor.`;
 }
 
-// COUGH
 if(message.includes("cough")){
 return `You mentioned cough.
-
-Possible causes:
-• Cold
-• Throat infection
-• Allergy
 
 Suggested care:
 • Drink warm water
 • Honey with ginger may help
 • Avoid cold drinks
 
-Medicine guidance:
-• Cough syrup may help relieve symptoms
-
 ⚠ If cough lasts more than a week consult a doctor.`;
 }
 
-// COLD
 if(message.includes("cold")){
 return `You mentioned cold symptoms.
 
 Suggested care:
 • Drink warm fluids
 • Steam inhalation
-• Rest properly
-
-Medicine guidance:
-• Antihistamine tablets may help
-
-⚠ If symptoms worsen consult a doctor.`;
+• Rest properly`;
 }
 
-// HEADACHE
 if(message.includes("headache")){
 return `You mentioned headache.
 
@@ -133,17 +111,10 @@ Possible causes:
 • Lack of sleep
 
 Suggested care:
-• Drink enough water
-• Rest in a quiet place
-• Avoid screen time
-
-Medicine guidance:
-• Mild pain relievers may help
-
-⚠ Severe headaches require medical consultation.`;
+• Drink water
+• Rest in a quiet room`;
 }
 
-// STOMACH PAIN
 if(message.includes("stomach pain")){
 return `You mentioned stomach pain.
 
@@ -154,79 +125,101 @@ Possible causes:
 
 Suggested care:
 • Drink warm water
-• Avoid oily foods
-• Eat light meals
-
-Medicine guidance:
-• Antacid tablets may help reduce acidity
-
-⚠ If pain continues for more than 24 hours consult a doctor.`;
+• Avoid oily food
+• Eat light meals`;
 }
 
-// VOMITING
-if(message.includes("vomit") || message.includes("vomiting")){
+if(message.includes("vomiting")){
 return `You mentioned vomiting.
-
-Possible causes:
-• Food poisoning
-• Stomach infection
-• Motion sickness
 
 Suggested care:
 • Drink small amounts of water
-• Take ORS solution
-• Rest properly
-
-⚠ If vomiting continues consult a doctor.`;
+• ORS solution may help
+• Rest properly`;
 }
 
-// DIARRHEA
 if(message.includes("diarrhea")){
 return `You mentioned diarrhea.
 
 Suggested care:
-• Drink ORS solution
+• Drink ORS
 • Stay hydrated
-• Avoid spicy foods
-
-⚠ If diarrhea continues for more than a day consult a doctor.`;
+• Avoid spicy food`;
 }
 
-// BODY PAIN
 if(message.includes("body pain")){
 return `You mentioned body pain.
-
-Possible causes:
-• Fatigue
-• Viral infection
-• Muscle strain
 
 Suggested care:
 • Take rest
 • Drink warm fluids
-• Gentle stretching may help
-
-Medicine guidance:
-• Mild pain relievers may reduce discomfort.`;
+• Gentle stretching may help`;
 }
 
-// STRESS
 if(message.includes("stress")){
 return `You mentioned stress.
 
 Suggested care:
 • Practice deep breathing
-• Try meditation
-• Take breaks from work
-
-Maintaining a healthy routine can help reduce stress levels.`;
+• Meditation
+• Take breaks`;
 }
 
-// DEFAULT
-return "Please describe your symptoms clearly so I can assist you better.";
+if(message.includes("dengue")){
+return `Dengue symptoms include fever, headache and joint pain.
+
+⚠ Immediately consult a doctor if dengue is suspected.`;
 }
 
-// ---------------- LOGOUT ----------------
-function logout(){
-window.location.href = "index.html";
+if(message.includes("malaria")){
+return `Malaria symptoms include fever, chills and sweating.
+
+⚠ Seek medical attention immediately.`;
+}
+
+if(message.includes("asthma")){
+return `Asthma symptoms include breathing difficulty and wheezing.
+
+Suggested care:
+• Avoid dust and smoke
+• Use inhaler if prescribed`;
+}
+
+if(message.includes("chest pain")){
+return `Chest pain can be serious.
+
+⚠ Seek medical help immediately if pain is severe.`;
+}
+
+if(message.includes("throat pain")){
+return `You mentioned throat pain.
+
+Suggested care:
+• Gargle warm salt water
+• Drink warm liquids`;
+}
+
+if(message.includes("eye infection")){
+return `Eye infection symptoms include redness and irritation.
+
+Suggested care:
+• Avoid touching eyes
+• Keep eyes clean`;
+}
+
+if(message.includes("skin allergy")){
+return `Skin allergy may cause itching or rash.
+
+Suggested care:
+• Avoid allergens
+• Keep skin clean`;
+}
+
+if(message.includes("diabetes")){
+return `Diabetes symptoms may include frequent urination and fatigue.
+
+⚠ Consult a doctor for proper diagnosis.`;
+}
+
+return "Please describe your symptoms clearly so I can assist you.";
 }
