@@ -345,3 +345,10 @@ historyList.innerHTML = "<li>No previous chats</li>";
 }
 
 }
+function logout(){
+
+localStorage.clear();
+
+window.location.href = "welcome.html";
+
+}
