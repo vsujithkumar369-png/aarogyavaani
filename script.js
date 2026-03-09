@@ -296,28 +296,34 @@ return `Diabetes symptoms may include frequent urination and fatigue.
 
 return "Please describe your symptoms clearly so I can assist you.";
 }
-function displayHistory(){
+function updateHistory(){
 
-const historyBox = document.getElementById("chatHistory");
+const historyList = document.getElementById("historyList");
 
-if(!historyBox) return;
+if(!historyList) return;
 
-historyBox.innerHTML = "";
+historyList.innerHTML = "";
 
 let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
 
 if(history.length === 0){
-historyBox.innerHTML = "No previous chats";
+historyList.innerHTML = "<li>No previous chats</li>";
 return;
 }
 
-history.slice(-5).forEach(msg => {
+history.slice(-12).forEach((msg,index) => {
 
-let item = document.createElement("div");
-item.className = "history-item";
-item.innerText = msg;
+const li = document.createElement("li");
 
-historyBox.appendChild(item);
+li.innerText = msg;
+
+li.onclick = function(){
+
+deleteHistory(index);
+
+};
+
+historyList.appendChild(li);
 
 });
 
@@ -328,9 +334,13 @@ displayHistory();
 window.onload = function(){
 updateHistory();
 };
-function clearHistory(){
+function deleteHistory(index){
 
-localStorage.removeItem("chatHistory");
+let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+history.splice(index,1);
+
+localStorage.setItem("chatHistory", JSON.stringify(history));
 
 updateHistory();
 
