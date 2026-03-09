@@ -1,3 +1,4 @@
+let language = "english";
 // ---------------- PASSWORD TOGGLE ----------------
 function togglePassword() {
     const password = document.getElementById("password");
