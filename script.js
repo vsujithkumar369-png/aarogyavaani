@@ -343,12 +343,8 @@ const historyList = document.getElementById("historyList");
 if(historyList){
 historyList.innerHTML = "<li>No previous chats</li>";
 }
-
 }
-function logout(){
-
-localStorage.clear();
-
-window.location.href = "welcome.html";
-
+function logout() {
+    localStorage.clear();
+    window.location.href = "welcome.html";
 }
