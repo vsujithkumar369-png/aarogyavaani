@@ -107,6 +107,16 @@ function getBotResponse(message){
 message = message.toLowerCase();
 
 if(message.includes("fever")){
+    if(language === "tamil"){
+return `உங்களுக்கு காய்ச்சல் உள்ளது.
+
+பராமரிப்பு:
+• ஓய்வு எடுக்கவும்
+• வெந்நீர் குடிக்கவும்
+
+⚠ 2 நாட்களுக்கு மேல் இருந்தால் மருத்துவரை அணுகவும்.`;
+}
+
 return `You mentioned fever.
 
 Suggested care:
