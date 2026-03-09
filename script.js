@@ -67,3 +67,48 @@ function sendMessage() {
 function logout() {
     window.location.href = "index.html";
 }
+// ================= CHATBOT LOGIC =================
+
+let feverMode = false;
+
+function getBotResponse(message) {
+
+message = message.toLowerCase();
+
+if(message.includes("fever")){
+    feverMode = true;
+
+    return "You mentioned fever. Do you also have cough, cold, body pain or headache?";
+}
+
+if(feverMode){
+
+    if(message.includes("cough") || message.includes("cold")){
+        feverMode = false;
+
+        return "You may have viral fever. Take rest, drink warm fluids and consider Paracetamol 500mg if fever is high. Consult a doctor if it lasts more than 2 days.";
+    }
+
+    if(message.includes("body pain")){
+        feverMode = false;
+
+        return "Fever with body pain detected. Rest well and stay hydrated. Paracetamol may help reduce fever and pain.";
+    }
+
+    if(message.includes("headache")){
+        feverMode = false;
+
+        return "Fever with headache detected. Rest in a quiet place and drink warm fluids.";
+    }
+}
+
+if(message.includes("cold")){
+    return "For cold: drink warm fluids and do steam inhalation.";
+}
+
+if(message.includes("cough")){
+    return "For cough: drink warm water with honey.";
+}
+
+return "Please describe your health problem so I can assist you.";
+}
