@@ -1,4 +1,4 @@
-let language = "english";
+let language = localStorage.getItem("language") || "english";
 // ---------------- PASSWORD TOGGLE ----------------
 function togglePassword() {
     const password = document.getElementById("password");
@@ -16,6 +16,10 @@ function loginUser(event) {
     event.preventDefault();
 
     const username = document.querySelector("input[type='text']").value;
+    const lang = document.getElementById("languageSelect");
+if(lang){
+localStorage.setItem("language", lang.value);
+}
 
     if (username.trim() === "") {
         alert("Please enter username");
