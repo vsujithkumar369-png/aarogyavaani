@@ -42,6 +42,10 @@ function sendMessage(){
 
 const input = document.getElementById("userInput");
 const message = input.value.trim();
+    const langSelect = document.getElementById("languageSelect");
+if(langSelect){
+language = langSelect.value;
+}
 
 if(message === "") return;
 
