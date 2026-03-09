@@ -37,7 +37,7 @@ if (document.getElementById("userDisplay")) {
     document.getElementById("userDisplay").innerText = username;
 }
 
-function sendMessage() {
+function sendMessage(){
 
 const input = document.getElementById("userInput");
 const message = input.value.trim();
@@ -46,13 +46,11 @@ if(message === "") return;
 
 const chatBox = document.getElementById("chatMessages");
 
-
 // USER MESSAGE
 const userMsg = document.createElement("div");
 userMsg.className = "user-message";
 userMsg.innerText = message;
 chatBox.appendChild(userMsg);
-
 
 // BOT MESSAGE
 const botMsg = document.createElement("div");
@@ -61,16 +59,41 @@ botMsg.innerText = getBotResponse(message);
 chatBox.appendChild(botMsg);
 
 
-// -------- SAVE HISTORY --------
+// SAVE MESSAGE TO HISTORY
 let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
 history.push(message);
 localStorage.setItem("chatHistory", JSON.stringify(history));
 
-displayHistory();
+updateHistory();
 
 input.value = "";
 
 chatBox.scrollTop = chatBox.scrollHeight;
+}
+function updateHistory(){
+
+const historyList = document.getElementById("historyList");
+
+if(!historyList) return;
+
+historyList.innerHTML = "";
+
+let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+if(history.length === 0){
+historyList.innerHTML = "<li>No previous chats</li>";
+return;
+}
+
+history.slice(-5).forEach(msg => {
+
+const li = document.createElement("li");
+li.innerText = msg;
+
+historyList.appendChild(li);
+
+});
+
 }
 
 // ---------------- BOT RESPONSE ----------------
@@ -261,4 +284,7 @@ historyBox.appendChild(item);
 }
 window.onload = function(){
 displayHistory();
+};
+window.onload = function(){
+updateHistory();
 };
