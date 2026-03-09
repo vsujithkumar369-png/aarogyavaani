@@ -85,7 +85,7 @@ historyList.innerHTML = "<li>No previous chats</li>";
 return;
 }
 
-history.slice(-5).forEach(msg => {
+history.slice(-12).forEach(msg => {
 
 const li = document.createElement("li");
 li.innerText = msg;
